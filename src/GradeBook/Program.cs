@@ -12,7 +12,6 @@ namespace GradeBook
             var book = new Book("Tommy's Grade Book");
             book.AddGrade(89.1);
             book.AddGrade(92.6);
-            Console.WriteLine($"The average grade is {book.GetAverage()}");
             Console.WriteLine(book);
 
 
