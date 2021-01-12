@@ -8,6 +8,21 @@ namespace GradeBook.Tests
     public class TypeTests
     {
         [Fact]
+        public void StringsBehaveLikeValueTypes()
+        {
+            string name = "Tommy";
+            var upper = MakeUpperCase(name);
+
+            Assert.Equal("Tommy", name);
+            Assert.Equal("TOMMY", upper);
+        }
+
+        private string MakeUpperCase(string parameter)
+        {
+           return parameter.ToUpper();
+        }
+
+        [Fact]
         public void CSharpCanPassByReference()
         {
             // arrange
