@@ -16,7 +16,7 @@ namespace GradeBook
 
         public Book(string name)
         {
-            this.name = name;
+            Name = name;
             this.grades = new List<double>();
         }
 
@@ -41,12 +41,12 @@ namespace GradeBook
 
         public void SetName(string name)
         {
-            this.name = name;
+            Name = name;
         }
         
         public string GetName()
         {
-            return this.name;
+            return Name;
         }
 
         public Statistics GetStatistics()
@@ -68,18 +68,10 @@ namespace GradeBook
             return result;
         }
 
-        // public void ShowStatistics()
-        // {
-        //     Console.WriteLine($"The lowest grade is {lowGrade}");
-        //     Console.WriteLine($"The highest grade is {highGrade}");
-        //     Console.WriteLine($"The average grade is {result:N2}");
-
-        // }
-
     
         public override string ToString()
         {
-            return $"Name: {this.name}\n"+
+            return $"Name: {Name}\n"+
                    $"Grades: {this.printList()}\n";
         }
 
@@ -93,6 +85,6 @@ namespace GradeBook
         // Data
         // -----------------------------
         private List<double> grades;
-        private string name;
+        private string Name;
     }
 }
