@@ -12,21 +12,11 @@ namespace GradeBook
             var book = new Book("Tommy's Grade Book");
             book.AddGrade(89.1);
             book.AddGrade(92.6);
-            Console.WriteLine(book);
-
-
-
-            if (args.Length > 0) 
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendJoin(' ', args);
-                Console.WriteLine($"Hello, {sb.ToString()}!");
-            } 
-            else 
-            {
-                Console.WriteLine("Hello!");
-            }
-
+            book.AddGrade(77.5);
+            book.AddGrade(104.0);
+            book.AddGrade(95.1);
+            book.ShowStatistics();
+            
         }
     }
 }
