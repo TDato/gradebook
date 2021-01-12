@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GradeBook
 {
-    class Book {
+    public class Book {
 
         /// <summary>
         /// Default Constructor to initialize a Book object
@@ -49,24 +49,32 @@ namespace GradeBook
             return this.name;
         }
 
-        public void ShowStatistics()
+        public Statistics GetStatistics()
         {
-            var result = 0.0;
-            var highGrade = double.MinValue;
-            var lowGrade = double.MaxValue;
+            var result = new Statistics();
+            result.Average = 0.0;
+            result.High = double.MinValue;
+            result.Low = double.MaxValue;
 
             foreach(var grade in this.grades) 
             {
-                lowGrade = Math.Min(grade, lowGrade);
-                highGrade = Math.Max(grade, highGrade);
-                result += grade;
+                result.Low = Math.Min(grade, result.Low);
+                result.High = Math.Max(grade, result.High);
+                result.Average += grade;
             }
 
-            result /= this.grades.Count;
-            Console.WriteLine($"The lowest grade is {lowGrade}");
-            Console.WriteLine($"The highest grade is {highGrade}");
-            Console.WriteLine($"The average grade is {result:N2}");
+            result.Average /= this.grades.Count;
+
+            return result;
         }
+
+        // public void ShowStatistics()
+        // {
+        //     Console.WriteLine($"The lowest grade is {lowGrade}");
+        //     Console.WriteLine($"The highest grade is {highGrade}");
+        //     Console.WriteLine($"The average grade is {result:N2}");
+
+        // }
 
     
         public override string ToString()

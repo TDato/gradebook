@@ -19,4 +19,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\GradeBook\GradeBook.csproj" />
+  </ItemGroup>
+
+
 </Project>
