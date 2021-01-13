@@ -72,15 +72,15 @@ namespace GradeBook
         //     return this.sum / this.grades.Count;
         // }
 
-        public void SetName(string name)
-        {
-            Name = name;
-        }
+        // public void SetName(string newname)
+        // {
+        //     name = newname;
+        // }
         
-        public string GetName()
-        {
-            return Name;
-        }
+        // public string GetName()
+        // {
+        //     return name;
+        // }
 
         public Statistics GetStatistics()
         {
@@ -140,7 +140,14 @@ namespace GradeBook
         // -----------------------------
         // Data
         // -----------------------------
-        private List<double> grades;
-        private string Name;
+        private List<double> grades; 
+
+        public string Name
+        {
+            get; 
+            set;
+        }
+
+        readonly string category;
     }
 }

@@ -5,8 +5,50 @@ using Xunit;
 
 namespace GradeBook.Tests
 {
+    public delegate string WriteLogDelegate(string logMessage);
+
     public class TypeTests
     {
+        [Fact]
+        public void WriteLogDelegateCanPointToMethod()
+        {
+            WriteLogDelegate log;
+            
+            // long version
+            // log = new WriteLogDelegate(ReturnMessage);
+
+            // short hand version
+            log = ReturnMessage;
+
+            var result = log("Hello!");
+            Assert.Equal("Hello!", result);
+
+        }
+        private string ReturnMessage(string message)
+        {
+            return message;
+        }
+
+        [Fact]
+        public void ValueTypeAlsoPassByValue()
+        {
+            var x = GetInt();
+            SetInt(ref x);
+            
+            Assert.Equal(42, x);
+        }
+
+        private void SetInt(ref Int32 z)
+        {
+            z = 42;
+        }
+
+        private int GetInt()
+        {
+            return 3;
+        }
+
+
         [Fact]
         public void StringsBehaveLikeValueTypes()
         {
@@ -30,7 +72,7 @@ namespace GradeBook.Tests
             GetBookSetName(ref book1, "New Name");
 
             // assert
-            Assert.Equal("New Name", book1.GetName());
+            Assert.Equal("New Name", book1.Name);
 
 
         }
@@ -48,7 +90,7 @@ namespace GradeBook.Tests
             GetBookSetName(book1, "New Name");
 
             // assert
-            Assert.Equal("Book 1", book1.GetName());
+            Assert.Equal("Book 1", book1.Name);
 
 
         }
@@ -65,14 +107,14 @@ namespace GradeBook.Tests
             SetName(book1, "New Name");
 
             // assert
-            Assert.Equal("New Name", book1.GetName());
+            Assert.Equal("New Name", book1.Name);
 
 
         }
 
         private void SetName(Book book, string name)
         {
-            book.SetName(name);
+            book.Name = name;
         }
 
         [Fact]
@@ -83,8 +125,8 @@ namespace GradeBook.Tests
             var book2 = GetBook("Book 2");
 
             // assert
-            Assert.Equal("Book 1", book1.GetName());
-            Assert.Equal("Book 2", book2.GetName());
+            Assert.Equal("Book 1", book1.Name);
+            Assert.Equal("Book 2", book2.Name);
             Assert.NotSame(book1, book2);
         }
 
