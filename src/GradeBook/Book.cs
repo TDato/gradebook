@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
+
 
 namespace GradeBook
 {
@@ -12,20 +12,14 @@ namespace GradeBook
     ***/
     public delegate void GradeAddedDelegate(object sender, EventArgs args);
 
-    public class Book {
+    public class Book : NamedObject {
 
-        /// <summary>
-        /// Default Constructor to initialize a Book object
-        /// </summary>
-        public Book() 
-        {
-            this.grades = new List<double>();
-        }
 
-        public Book(string name)
+        public Book(string name) 
+            : base(name)
         {
             Name = name;
-            this.grades = new List<double>();
+            grades = new List<double>();
         }
 
         public void AddGrade(char letter)
@@ -136,12 +130,6 @@ namespace GradeBook
         // -----------------------------
         private List<double> grades; 
         public event GradeAddedDelegate GradeAdded;
-
-        public string Name
-        {
-            get; 
-            set;
-        }
 
         readonly string category;
     }
