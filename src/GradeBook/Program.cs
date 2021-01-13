@@ -7,7 +7,7 @@ namespace GradeBook
     {
         static void Main(string[] args)
         {
-            var book = new Book("Tommy's Grade Book");
+            var book = new DiskBook("Tommy's Grade Book");
             book.GradeAdded += OnGradeAdded;
 
             EnterGrades(book);
@@ -20,7 +20,7 @@ namespace GradeBook
 
         }
 
-        private static void EnterGrades(Book book)
+        private static void EnterGrades(IBook book)
         {
             while (true)
             {
