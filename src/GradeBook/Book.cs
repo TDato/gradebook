@@ -4,6 +4,14 @@ using System.Text;
 
 namespace GradeBook
 {
+
+    /***
+    * All Events in .Net, typically have two parameters
+    * first parameter: an object as sender
+    * second parameter: an EventArgs args
+    ***/
+    public delegate void GradeAddedDelegate(object sender, EventArgs args);
+
     public class Book {
 
         /// <summary>
@@ -55,32 +63,18 @@ namespace GradeBook
             if(grade <= 100 && grade >= 0) 
             {
                 this.grades.Add(grade);
+                if(GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else 
             {
                 throw new ArgumentException($"Invalid {nameof(grade)}");
             }
         }
-        // /// <summary>
-        // /// Computes the average grade value
-        // /// </summary>
-        // /// <returns>
-        // /// The average grade from the list of grades
-        // /// </returns>
-        // public double GetAverage() 
-        // {
-        //     return this.sum / this.grades.Count;
-        // }
 
-        // public void SetName(string newname)
-        // {
-        //     name = newname;
-        // }
         
-        // public string GetName()
-        // {
-        //     return name;
-        // }
 
         public Statistics GetStatistics()
         {
@@ -141,6 +135,7 @@ namespace GradeBook
         // Data
         // -----------------------------
         private List<double> grades; 
+        public event GradeAddedDelegate GradeAdded;
 
         public string Name
         {
